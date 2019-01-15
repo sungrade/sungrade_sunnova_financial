@@ -3,7 +3,6 @@ PATH
   specs:
     sungrade_sunnova_financial (0.1.0)
       faraday
-      faraday_curl
 
 GEM
   remote: https://rubygems.org/
@@ -11,8 +10,6 @@ GEM
     diff-lcs (1.3)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    faraday_curl (0.0.2)
-      faraday (>= 0.9.0)
     multipart-post (2.0.0)
     rake (10.5.0)
     rspec (3.8.0)

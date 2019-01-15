@@ -19,14 +19,15 @@ module SungradeSunnovaFinancial
         response
       end
 
-      def fetch_token(settings: SungradeSunnovaFinancial.new_settings, code:, grant_type: :authorization_code, **opts)
+      def fetch_token(settings: SungradeSunnovaFinancial.new_settings, grant_type: :authorization_code, **opts)
         params = {
-          code: code,
           grant_type: grant_type,
           client_id: settings.client_id,
           client_secret: settings.client_secret,
-          redirect_uri: settings.redirect_uri
         }.merge(opts)
+        unless grant_type.to_s == "password"
+          params = params.merge(redirect_uri: settings.redirect_uri)
+        end
         requester = Request.new(
           settings: settings,
           requires_access_token: false,

@@ -6,6 +6,8 @@ require "sungrade_sunnova_financial/settings"
 require "sungrade_sunnova_financial/authorization"
 require "sungrade_sunnova_financial/lead"
 require "sungrade_sunnova_financial/lead_person"
+require "sungrade_sunnova_financial/lead_system"
+require "sungrade_sunnova_financial/equipment"
 
 module SungradeSunnovaFinancial
   class << self
