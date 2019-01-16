@@ -10,6 +10,14 @@ module SungradeSunnovaFinancial
           req.body = {}.to_json
         end
       end
+
+      def credit_check_status(settings:, id:)
+        requester = Request.new(settings: settings)
+        config = settings.configuration
+        requester.get do |req|
+          req.url("#{settings.api_version}/#{config.stage}/partner/leadpersons/#{id}/creditstatus")
+        end
+      end
     end
   end
 end

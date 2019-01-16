@@ -5,7 +5,7 @@ module SungradeSunnovaFinancial
         requester = Request.new(settings: settings)
         config = settings.configuration
         requester.get do |req|
-          req.url("#{settings.api_version}/#{config.stage}/partner/equipment")
+          req.url("#{settings.api_version}/#{config.stage}/partner/utilities")
         end
       end
     end
