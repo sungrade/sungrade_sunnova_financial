@@ -7,6 +7,7 @@ require "sungrade_sunnova_financial/authorization"
 require "sungrade_sunnova_financial/lead"
 require "sungrade_sunnova_financial/lead_person"
 require "sungrade_sunnova_financial/lead_system"
+require "sungrade_sunnova_financial/lead_quote"
 require "sungrade_sunnova_financial/equipment"
 require "sungrade_sunnova_financial/utility"
 

@@ -9,6 +9,20 @@ module SungradeSunnovaFinancial
         end
       end
 
+      # /partner/leads/{LID}/utilities/{LSEID}
+      def update_utility_information(settings:, lead_id:, lse_id:, body:)
+        requester = Request.new(settings: settings)
+        config = settings.configuration
+        unless body.is_a?(String)
+          body = body.to_json
+        end
+        requester.patch do |req|
+          req.headers.merge!("Content-Type" => "application/json")
+          req.url("#{settings.api_version}/#{config.stage}/partner/leads/#{lead_id}/utilities/#{lse_id}")
+          req.body = body
+        end
+      end
+
       def rate_plans(settings:, lead_id:, lse_id:)
         requester = Request.new(settings: settings)
         config = settings.configuration
