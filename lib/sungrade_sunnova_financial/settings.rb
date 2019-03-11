@@ -14,44 +14,16 @@ module SungradeSunnovaFinancial
       end
     end
 
-    def base_token_url
-      with_required(__method__) do
-        @base_token_url || configuration.base_token_url
+    Configuration::FIELDS.each do |meth|
+      define_method(meth) do
+        with_required(meth) do
+          if var = instance_variable_get("@#{meth}")
+            var
+          else
+            configuration.send(meth)
+          end
+        end
       end
-    end
-
-    def base_api_url
-      with_required(__method__) do
-        @base_api_url || configuration.base_api_url
-      end
-    end
-
-    def client_id
-      with_required(__method__) do
-        @client_id || configuration.client_id
-      end
-    end
-
-    def client_secret
-      with_required(__method__) do
-        @client_secret || configuration.client_secret
-      end
-    end
-
-    def redirect_uri
-      with_required(__method__) do
-        @redirect_uri || configuration.redirect_uri
-      end
-    end
-
-    def api_version
-      with_required(__method__) do
-        @api_version || configuration.api_version
-      end
-    end
-
-    def show_connection_logs
-      @show_connection_logs || configuration.show_connection_logs
     end
 
     def access_token
@@ -63,6 +35,7 @@ module SungradeSunnovaFinancial
 
     def with_required(attribute)
       result = yield
+      return result if attribute.to_s == "show_connection_logs"
       return result if result
       raise RequiredSettingMissing.new("#{attribute} is a required attribute needed for this request")
     end

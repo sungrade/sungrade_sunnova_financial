@@ -3,9 +3,8 @@ module SungradeSunnovaFinancial
     class << self
       def list_all(settings:)
         requester = Request.new(settings: settings)
-        config = settings.configuration
         requester.get do |req|
-          req.url("#{settings.api_version}/#{config.stage}/partner/equipment")
+          req.url("#{settings.api_version}/#{settings.stage}/partner/equipment")
         end
       end
     end
