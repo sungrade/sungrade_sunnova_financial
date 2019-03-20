@@ -23,7 +23,6 @@ module SungradeSunnovaFinancial
       def email_contract(settings:, lead_quote_id:)
         requester = Request.new(settings: settings)
         requester.patch do |req|
-          req.headers.merge!("Content-Type" => "application/json")
           req.url("#{settings.api_version}/#{settings.stage}/partner/leadquotes/#{lead_quote_id}/emailcontract")
         end
       end
@@ -34,7 +33,6 @@ module SungradeSunnovaFinancial
         additional = partner_only ? "emailproposaltopartner" : "emailproposal"
         url = [base_url, additional].join("/")
         requester.patch do |req|
-          req.headers.merge!("Content-Type" => "application/json")
           req.url(url)
         end
       end
